@@ -6,15 +6,23 @@ A simple Multi-Attribute Decision Making (MADM) program to help choose a job, fo
 > What is the use of this?
 
 1. Prepare your data:
-![tabla1](./assets/tabla1.png)
-![tabla2](./assets/tabla2.png)
+<p align="center">
+  <img src="./assets/tabla1.png" alt="tabla1" title="tabla1" style="display: inline-block; margin-right: 10px; width: 600px" />
+</p>
+<p align="center">
+  <img src="./assets/tabla2.png" alt="tabla2" title="tabla2" style="display: inline-block; width: 300px" />,
+</p>
 
 or
 
-![json](./assets/json.png)...
+<p align="center">
+  <img src="./assets/json.png" alt="json" title="json" style="display: inline-block; margin-right: 10px; width: 600px;" />...
+</p>
 
 2. ...and let the oracle decide **_the best_** suited job for you!
-![terminal](./assets/terminal.png)
+<p align="center">
+  <img src="./assets/terminal.png" alt="terminal" title="terminal" style="display: inline-block; margin-right: 10px; width: 900px; " />
+</p>
 
 ## Installation
 Dependencies:
@@ -80,9 +88,10 @@ Check [here](./data/) for guide templates to create your files.
 
 One just have to check the terminal to see the oracle opinion. The output in `./assets/job_scores.png` will include a sorted bar chart visualizing the final scores of each job alternative:
 
-![output_image](./assets/job_scores.png)
+<p align="center">
+  <img src="./assets/job_scores.png" alt="output_image" title="output_image" style="display: inline-block; margin-right: 10px; width: 400px; " />
+</p>
 
 ## Links
-
 - see https://sustainabilitymethods.org/index.php/Multi-Criteria_Decision_Making_in_Python
 - see https://github.com/Valdecy/pyDecision/tree/master
