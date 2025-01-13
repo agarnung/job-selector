@@ -2,6 +2,20 @@
 
 A simple Multi-Attribute Decision Making (MADM) program to help choose a job, for instance.
 
+> [!NOTE]  
+> What is the use of this?
+
+1. Prepare your data:
+![tabla1](./assets/tabla1.png)
+![tabla2](./assets/tabla2.png)
+
+or
+
+![json](./assets/json.png)...
+
+2. ...and let the oracle decide **_the best_** suited job for you!
+![terminal](./assets/terminal.png)
+
 ## Installation
 Dependencies:
 ```bash
@@ -67,7 +81,6 @@ Check [here](./data/) for guide templates to create your files.
 One just have to check the terminal to see the oracle opinion. The output in `./assets/job_scores.png` will include a sorted bar chart visualizing the final scores of each job alternative:
 
 ![output_image](./assets/job_scores.png)
-![terminal](./assets/terminal.png)
 
 ## Links
 
