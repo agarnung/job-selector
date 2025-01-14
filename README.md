@@ -86,7 +86,7 @@ Select a specific method with the `--method` argument. Currently the following m
 
 Check [here](./data/) for guide templates to create your files. 
 
-One just have to check the terminal to see the oracle opinion. The output in `./assets/job_scores.png` will include a sorted bar chart visualizing the final scores of each job alternative:
+One just have to check the terminal to see the oracle opinion. The output in `./out/job_scores.png` will include a sorted bar chart visualizing the final scores of each job alternative:
 
 <p align="center">
   <img src="./assets/job_scores.png" alt="output_image" title="output_image" style="display: inline-block; margin-right: 10px; width: 400px; " />
