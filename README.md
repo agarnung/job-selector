@@ -1,6 +1,6 @@
 # job-selector
 
-A simple Multi-Attribute Decision Making (MADM) program to help choose a job, for instance.
+A simple Multi-Attribute Decision Making (MADM) program to help choose a job, for instance. Inspired by decision-making theory.
 
 > [!NOTE]  
 > What is the use of this?
@@ -83,6 +83,7 @@ python3 -m JobSelector --file=./data/job-selector_raw_data_template.json
 
 Select a specific method with the `--method` argument. Currently the following methods are available:
 * [SAW](https://en.wikipedia.org/wiki/Weighted_sum_model) (`--method SAW`)
+* [AHP](https://en.wikipedia.org/wiki/Analytic_hierarchy_process) (`--method AHP`)
 
 Check [here](./data/) for guide templates to create your files. 
 
