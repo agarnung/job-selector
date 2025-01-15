@@ -5,6 +5,30 @@ import matplotlib.pyplot as plt
 import json
 import os
 
+            
+# This method normalizes the criteris weights using the largest eigenvalue of the comparison matrix,
+# resulting in relative weights of the criteria normalized in a unified manner
+def ahp_method(matrix):
+    # n: Number of criteria (matrix rows)
+    n = matrix.shape[0]
+    
+    # Calculate eigenvalues and eigenvectors of the matrix
+    eigenvalues, eigenvectors = np.linalg.eig(matrix)
+    
+    # The largest eigenvalue is considered the most important direction int he criteria space
+    max_eigenvalue_index = np.argmax(np.real(eigenvalues)) 
+    max_eigenvalue = np.real(eigenvalues[max_eigenvalue_index])
+    principal_eigenvector = np.real(eigenvectors[:, max_eigenvalue_index])
+    
+    # Normalize the principal eigenvector to get the weights
+    weights = principal_eigenvector / principal_eigenvector.sum()
+    
+    # Calculate the consistency index
+    # The formula used is (λ_max - n) / (n - 1), where λ_max is the maximum eigenvalue and n is the number of criteria
+    consistency_index = (max_eigenvalue - n) / (n - 1)
+    
+    return weights, consistency_index
+
 class JobSelector:
     def __init__(self, file_path, method="SAW"):
         self.file_path = file_path
@@ -46,7 +70,28 @@ class JobSelector:
     def apply_saw_method(self, normalized_matrix):
         scores = np.dot(self.weights, normalized_matrix.T)
         return scores
-            
+
+    def apply_ahp_method(self, normalized_matrix):
+        # Create the pairwise comparison matrix based on the weights of the criteria
+        pairwise_comparison_matrix = np.ones((len(self.criteria), len(self.criteria)))
+        
+        # Fill the pairwise comparison matrix, which reflects the relative importance between criteria
+        # For each pair of criteria, calculate the ratio of importance
+        for i in range(len(self.criteria)):
+            for j in range(i + 1, len(self.criteria)):
+                # Calculate the ratio of importance between criteria
+                ratio = self.weights[i] / self.weights[j] # Establish the relationship between criteria
+                pairwise_comparison_matrix[i][j] = ratio # Assign the ratio to the matrix
+                pairwise_comparison_matrix[j][i] = 1 / ratio # The matrix is symmetric, so we assign the inverse value as well
+        
+        # Now that we have the pairwise comparison matrix, we calculate the weights using the AHP method
+        weights, consistency_index = ahp_method(pairwise_comparison_matrix)
+        
+        # Apply the weights to the normalized alternatives matrix by performing a dot product
+        scores = np.dot(weights, normalized_matrix.T)
+        
+        return scores
+
     def plot_results(self, scores):
         scores_df = pd.DataFrame(scores, index=self.decision_matrix.index, columns=["Score"])
         scores_df = scores_df.sort_values(by="Score", ascending=False)
@@ -71,7 +116,10 @@ class JobSelector:
 
         normalized_matrix = self.normalize_matrix()
 
-        if self.method == "SAW":
+        if self.method == "AHP":
+            print("\nUsing AHP method for scoring...")
+            scores = self.apply_ahp_method(normalized_matrix)
+        elif self.method == "SAW":
             print("\nUsing SAW method for scoring...")
             scores = self.apply_saw_method(normalized_matrix)
         else:
@@ -88,7 +136,7 @@ class JobSelector:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Multi-Attribute Decision Making for Job Selection")
     parser.add_argument("--file", type=str, required=True, help="Path to the input file (.json or .xlsx)")
-    parser.add_argument("--method", type=str, default="SAW", choices=["SAW"], help="Method to use for scoring")
+    parser.add_argument("--method", type=str, default="SAW", choices=["AHP", "SAW"], help="Method to use for scoring")
     args = parser.parse_args()
 
     job_selector = JobSelector(file_path=args.file, method=args.method)
