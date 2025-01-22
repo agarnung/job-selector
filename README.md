@@ -27,7 +27,7 @@ or
   <img src="./assets/json.png" alt="json" title="json" style="display: inline-block; margin-right: 10px; width: 600px;" />...
 </p>
 
-2. ...and let the oracle decide **_the best_** suited job for you!
+2. ...and let the oracle decide **_the best_** suited option for you!
 <p align="center">
   <img src="./assets/terminal.png" alt="terminal" title="terminal" style="display: inline-block; margin-right: 10px; width: 900px; " />
 </p>
@@ -49,7 +49,7 @@ For instance, selecting a job might require considering salary, location, work-l
 
 1. In general, the decision-making process can be broken into the following eight steps:
 
-2. Define the Problem: Clearly identify the decision to be made. For example, selecting the most suitable job from available options.
+2. Define the Problem: Clearly identify the decision to be made. For example, selecting the most suitable alternative from available options.
 
 3. Determine Requirements: Establish the essential conditions that must be met for any solution to be considered acceptable.
 
@@ -69,7 +69,7 @@ For instance, selecting a job might require considering salary, location, work-l
 8. Validate the Solution: Ensure the selected alternative aligns with the initial problem and fulfills the requirements and goals.
 
 ### Benefit and Cost Criteria
-In this script, two types of criteria are used to evaluate job alternatives:
+In this script, two types of criteria are used to evaluate alternatives:
 
 * Benefit Criterion: Higher values are desirable. For example, higher salary, more vacation days, or greater learning opportunities.
 * Cost Criterion: Lower values are preferable. For example, shorter commute time, fewer working hours, or lower expenses.
@@ -77,16 +77,16 @@ In this script, two types of criteria are used to evaluate job alternatives:
 
 ## Usage 
 
-The Python script reads data from an Excel or JSON file where you define your job alternatives and their corresponding attributes (such as salary, commute time, hours per week, etc.), as well as the weights and types of the criteria. The ratings for each job can be subjective (e.g., on a scale of 1 to 4) and are used to quantify the different aspects of each job.
+The Python script reads data from an Excel or JSON file where you define your alternatives and their corresponding attributes (such as salary, commute time, hours per week, etc.), as well as the weights and types of the criteria. The ratings for each job can be subjective (e.g., on a scale of 1 to 4) and are used to quantify the different aspects of each option.
 
 To use an Excel file, prepare your data in the following format:
 ```bash
-python3 -m JobSelector --file=./data/job-selector_excel_template.xlsx
+python3 -m OptionSelector --file=./data/option-selector_excel_template.xlsx
 ```
 
 If you prefer to use a JSON file, the format should be as follows:
 ```bash
-python3 -m JobSelector --file=./data/job-selector_raw_data_template.json
+python3 -m OptionSelector --file=./data/option-selector_raw_data_template.json
 ```
 
 Select a specific method with the `--method` argument. Currently the following methods are available:
@@ -95,10 +95,10 @@ Select a specific method with the `--method` argument. Currently the following m
 
 Check [here](./data/) for guide templates to create your files. 
 
-One just have to check the terminal to see the oracle opinion. The output in `./out/job_scores.png` will include a sorted bar chart visualizing the final scores of each job alternative:
+One just have to check the terminal to see the oracle opinion. The output in `./out/scores.png` will include a sorted bar chart visualizing the final scores of each alternative:
 
 <p align="center">
-  <img src="./assets/job_scores.png" alt="output_image" title="output_image" style="display: inline-block; margin-right: 10px; width: 400px; " />
+  <img src="./assets/scores.png" alt="output_image" title="output_image" style="display: inline-block; margin-right: 10px; width: 400px; " />
 </p>
 
 ## Links
