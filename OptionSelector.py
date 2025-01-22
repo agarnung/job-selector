@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import json
 import os
 
-            
 # This method normalizes the criteris weights using the largest eigenvalue of the comparison matrix,
 # resulting in relative weights of the criteria normalized in a unified manner
 def ahp_method(matrix):
@@ -29,7 +28,7 @@ def ahp_method(matrix):
     
     return weights, consistency_index
 
-class JobSelector:
+class OptionSelector:
     def __init__(self, file_path, method="SAW"):
         self.file_path = file_path
         self.method = method
@@ -96,8 +95,8 @@ class JobSelector:
         scores_df = pd.DataFrame(scores, index=self.decision_matrix.index, columns=["Score"])
         scores_df = scores_df.sort_values(by="Score", ascending=False)
         ax = scores_df["Score"].plot(kind="bar", colormap="viridis", xlabel="Alternatives", ylabel="Score", rot=0)
-        plt.title("Job Alternatives - Scores")
-        plt.savefig('./out/job_scores.png', bbox_inches='tight')
+        plt.title("Alternatives - Scores")
+        plt.savefig('./out/scores.png', bbox_inches='tight')
         return scores_df
 
     def run(self):
@@ -134,10 +133,10 @@ class JobSelector:
         print(f"\n...You should consider selecting {top_choice}")
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Multi-Attribute Decision Making for Job Selection")
+    parser = argparse.ArgumentParser(description="Multi-Attribute Decision Making for Option Selection")
     parser.add_argument("--file", type=str, required=True, help="Path to the input file (.json or .xlsx)")
     parser.add_argument("--method", type=str, default="SAW", choices=["AHP", "SAW"], help="Method to use for scoring")
     args = parser.parse_args()
 
-    job_selector = JobSelector(file_path=args.file, method=args.method)
-    job_selector.run()
+    option_selector = OptionSelector(file_path=args.file, method=args.method)
+    option_selector.run()
