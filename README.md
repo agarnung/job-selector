@@ -1,6 +1,14 @@
-# job-selector
+# option-selector
 
-A simple Multi-Attribute Decision Making (MADM) program to help choose a job, for instance. Inspired by decision-making theory.
+A simple Multi-Attribute Decision Making (MADM) program to help choose an alternative between multiple options; a job, for instance. Inspired by decision-making theory.
+
+--- 
+
+🧠 _Ever dubious about an important decision to make and **multiple alternatives** to choose from?_
+
+💭 _Interminable hours of reflection and **indecision** that lead nowhere?_
+
+💡 _Let this app help you and put a little trust in the power of mathematics to assist you in making **the best possible decision**._
 
 > [!NOTE]  
 > What is the use of this?
